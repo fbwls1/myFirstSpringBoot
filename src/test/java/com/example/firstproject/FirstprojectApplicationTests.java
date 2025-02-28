@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class FirstprojectApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void index() {
 	}
 
 }

@@ -4,6 +4,7 @@ import com.example.firstproject.entity.Article;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +25,26 @@ class ArticleServiceTest {
         List<Article> expected = new ArrayList<Article>(Arrays.asList(a, b, c));
         //2. 실제 데이터
         List<Article> articles = articleService.index();
+
+        System.out.println("Expected: " + expected.toString());
+        System.out.println("Actual: " + articles.toString());
         //3. 비교 및 검증
-        assertEquals(expected.toString(), articles.toString());
+        assertEquals(expected.toString(), articles.toString(), "failed");
+
+    }
+
+    @Test
+    void show_성공_존재하는_id_입력() {
+        //1.예상 데이터
+        Long id = 1L;
+        Article expected = new Article(id, "aaaa", "1111");
+        //2.실제 데이터
+        Article article = articleService.show(id);
+        //3.비교 및 검증
+        assertEquals(expected.toString(), article.toString());
+    }
+
+    @Test
+    void show_fail() {
     }
 }
